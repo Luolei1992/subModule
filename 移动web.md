@@ -86,10 +86,44 @@
 2. @media方法
 
 ```
-@media only screen and (max-width:320px){
-    body {
-        background-color:red;
-    }
+@media screen and (max-width: 960px){
+}  
+@media screen and (max-width: 768px){
+}  
+@media screen and (max-width: 550px){
+
+}  
+@media screen and (max-width: 320px){
+}
+
+
+
+
+/*当页面大于1200px 时，大屏幕，主要是PC 端*/
+@media (min-width: 1200px) {
+
+}
+
+/*在992 和1199 像素之间的屏幕里，中等屏幕，分辨率低的PC*/
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+/*在768 和991 像素之间的屏幕里，小屏幕，主要是PAD和大屏手机*/
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+/*在480 和767 像素之间的屏幕里，超小屏幕，主要是手机*/
+@media (min-width: 480px) and (max-width: 767px){
+
+}
+/*在小于480 像素的屏幕，微小屏幕，更低分辨率的手机*/
+@media (min-width: 320px) and (max-width: 479px) {
+
+}
+
+/*针对iPhone 4, 5c,5s, 所有iPhone6的放大模式，个别iPhone6的标准模式*/
+@media (max-device-width: 320px) {
+
 }
 ```
 
