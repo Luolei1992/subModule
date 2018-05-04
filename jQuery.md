@@ -2,22 +2,19 @@
 ```
 var $obj = $(“div”);
 $obj.html(“jquery对象设置文本的方法”);
-$obj.show();//jquery对象显示文本
-$obj.click(function() {});//jquery对象绑定事件
+$obj.show();                   //jquery对象显示文本
+$obj.click(function() {});     //jquery对象绑定事件
 ```
 
 ```
 1. jquery对象转DOM对象
-var $li = $(“li”);
-//这样写就不用再遍历了
-//第一种方法（推荐使用）
+var $li = $(“li”);              //这样写就不用再遍历了
+- 第一种方法（推荐使用）
 $li[0]
 //第二种方法
-$li.get(0)
-//其实jQuery对象转DOM对象的实质就是取出jQuery对象中封装的DOM对象。
-2.DOM对象转jquery对象（联想记忆：我有钱[美元]，所以我的功能就更强大）
-var $obj = $(domObj);
-// $(document).ready(function(){});就是典型的DOM对象转jQuery对象
+$li.get(0)            //其实jQuery对象转DOM对象的实质就是取出jQuery对象中封装的DOM对象。
+2.DOM对象转jquery对象
+var $obj = $(domObj);          // $(document).ready(function(){});就是典型的DOM对象转jQuery对象
 ```
 
 #### jQuery过滤选择器
@@ -26,92 +23,111 @@ var $obj = $(domObj);
 > - :even
 + 语法
 > $('li:even').css('color', 'red');  //设置样式.css
+
 > $("#one").css({
 >    "background":"gray",
 >    "width":"400px",
 >    "height":"200px"
 > });
+
 > $("div").css("background-color");  //获取样式
 
 #### jQuery筛选选择器
-> children(selector)    $(“ul”).children(“li”)  相当于$(“ul>li”)，子类选择器
-> find(selector)    $(“ul”).find(“li”); 相当于$(“ul li”),后代选择器
-> siblings(selector)    $(“#first”).siblings(“li”);  查找兄弟节点，不包括自己本身。
+> children(selector)    
+  - $(“ul”).children(“li”)  相当于$(“ul>li”)，子类选择器
+> find(selector)    
+  - $(“ul”).find(“li”); 相当于$(“ul li”),后代选择器
+> siblings(selector)    
+  - $(“#first”).siblings(“li”);  查找兄弟节点，不包括自己本身。
 > prevAll()  //前面的兄弟元素
+
 > nextAll()  //后面的兄弟元素
+
 > next() 当前元素的下一个兄弟元素
-> parent()  $(“#first”).parent();   查找父亲
-> eq(index) $(“li”).eq(2);  相当于$(“li:eq(2)”),index从0开始
+> parent()  
+  - $(“#first”).parent();      查找父亲
+> eq(index) 
+  - $(“li”).eq(2);  相当于$(“li:eq(2)”),index从0开始
 
 ### class操作
 > $(“div”).addClass(“one”); //给所有的div添加one的样式。
+
 > $(“div”).removeClass();  //移除div所有的样式类
+
 > $(“div”).removeClass(“one”);  //移除div中one的样式类名
+
 > $(“div”).hasClass(“one”);  //判断第一个div是否有one的样式类
+
 > $(“div”).toggleClass(“one”);  //需要切换的样式类名，如果有，移除该样式，如果没有，添加该样式。
 
 #### 显示和隐藏
 - show方法详解：
 > show([speed], [callback]);
-//speed(可选)：动画的执行时间
-     1. 如果不传，就没有动画效果。
-     2. 毫秒值(比如1000),动画在1000毫秒执行完成(推荐)
-     3. 固定字符串，slow(200)、normal(400)、fast(600)，如果传其他字符串，则默认为normal。
-//callback(可选):执行完动画后执行的回调函数
+
+1. speed(可选)：动画的执行时间
+2. 如果不传，就没有动画效果。
+3. 毫秒值(比如1000),动画在1000毫秒执行完成(推荐)
+4. 固定字符串，slow(200)、normal(400)、fast(600)，如果传其他字符串，则默认为normal。
+5. callback(可选):执行完动画后执行的回调函数
 - hide方法详解：与show方法的用法完全一致。
-show/hide：修改的是元素的width、height、opacity。
+> show/hide：修改的是元素的width、height、opacity。
+
 #### 滑入和滑出
 - slideUp/slideDown,使用方法与show/hide基本一致。
 > slideUp(speed, callback);
-//speed(可选)：动画的执行时间
-     1. 如果不传，默认为normal，注意区分show/hide。
-     2. 毫秒值(比如1000),动画在1000毫秒执行完成(推荐)
-     3. 固定字符串，slow(200)、normal(400)、fast(600)
-//callback(可选):执行完动画后执行的回调函数
-slideUp/slideDown：修改的是元素的height;
+1. speed(可选)：动画的执行时间
+2. 如果不传，默认为normal，注意区分show/hide。
+3. 毫秒值(比如1000),动画在1000毫秒执行完成(推荐)
+4. 固定字符串，slow(200)、normal(400)、fast(600)
+5. callback(可选):执行完动画后执行的回调函数
+
+- slideUp/slideDown：修改的是元素的height;
 
 **滑入滑出切换**
+
 > $(selector).slideToggle(speed,callback);
-//如果是隐藏状态，那么执行slideDown操作，如果是显示状态，那么执行slideUp操作。
+
+- 如果是隐藏状态，那么执行slideDown操作，如果是显示状态，那么执行slideUp操作。
 
 #### 淡入和淡出
 - fadeIn/fadeOut使用方法与show/hide、slideDown/slideUp一致。
 > fadeIn(speed, callback);
-//speed(可选)：动画的执行时间
-     1. 如果不传，默认是normal。
-     2. 毫秒值(比如1000),动画在1000毫秒执行完成(推荐)
-     3. 固定字符串，slow(200)、normal(400)、fast(600)
-//callback(可选):执行完动画后执行的回调函数
+1. speed(可选)：动画的执行时间
+2. 如果不传，默认是normal。
+3. 毫秒值(比如1000),动画在1000毫秒执行完成(推荐)
+4. 固定字符串，slow(200)、normal(400)、fast(600)
+5. callback(可选):执行完动画后执行的回调函数
 
-**淡入淡出切换：**
-fadeToggle(speed, callback);
-//如果当前元素处于隐藏状态，那么执行fadeIn操作，如果处于显示状态，那么执行fadeOut操作。
+**淡入淡出切换**
+- fadeToggle(speed, callback);
+> 如果当前元素处于隐藏状态，那么执行fadeIn操作，如果处于显示状态，那么执行fadeOut操作。
 *淡入淡出到某个值*
 
-+ 与淡入淡出的区别：淡入淡出只能控制元素的不透明度从 完全不透明到完全透明；而fadeTo可以指定元素不透明度的具体值。并且时间参数是必需的！
 
-> fadeTo(speed, value, callback)//可以设置具体的透明度
-//speed（必须）
-//value  0-1之间的数值(比如0.4)，表示淡到某一个值。
-//callback(可选) 回调函数
+- fadeTo(speed, value, callback)//可以设置具体的透明度
+> 与淡入淡出的区别：淡入淡出只能控制元素的不透明度从 完全不透明到完全透明；而fadeTo可以指定元素不透明度的具体值。并且时间参数是必需的！
+1. speed（必须）
+2. value  0-1之间的数值(比如0.4)，表示淡到某一个值。
+3. callback(可选) 回调函数
+
 *fade系列方法：修改的是元素的opacity*
 
 #### animate：自定义动画
 > $(selector).animate({params},[speed],[callback]);
-// {params}：要执行动画的CSS属性，带数字（必选）
-// speed：执行动画时长（可选）
-// callback：动画执行完后立即执行的回调函数（可选）
+1. {params}：要执行动画的CSS属性，带数字（必选）
+2. speed：执行动画时长（可选）
+3. callback：动画执行完后立即执行的回调函数（可选）
 
 + 6easing参数
-+ 控制动画在不同元素的速度，默认为“swing”
-+ “swing”：在开头和结尾移动慢，在中间移动速度快
-+ “linear”：匀速移动
+1. 控制动画在不同元素的速度，默认为“swing”
+2. “swing”：在开头和结尾移动慢，在中间移动速度快
+3. “linear”：匀速移动
 
 - stop方法：停止动画效果
-- stop(clearQueue, jumpToEnd);
-//第一个参数：是否清除队列
-//第二个参数：是否跳转到最终效果
-//最常用的停止动画：stop();
+> stop(clearQueue, jumpToEnd);
+1. 第一个参数：是否清除队列
+2. 第二个参数：是否跳转到最终效果
+3. 最常用的停止动画：stop();
 
 ### jquery操作DOM(节点)
 1. 创建元素
@@ -122,6 +138,7 @@ fadeToggle(speed, callback);
 - 方法一：将jQuery对象添加到调用者内部的最后面。
 
 > var $span = $(“<span>这是一个span元素</span>”);
+
 > $(“div”).append($span);
 
 - 方法二：参数传字符串，会自动创建成jquery对象
@@ -131,8 +148,10 @@ fadeToggle(speed, callback);
 3. 添加已经存在的元素
 
 > var $p = $(“p”);
+
 > $(“div”).append($p);
-//注意：如果添加的是已经存在的元素，那么会把之前的元素给干掉。（类似于剪切的功能）。
+
+> 注意：如果添加的是已经存在的元素，那么会把之前的元素给干掉。（类似于剪切的功能）。
 
 **类似的用法：append  prepend  after before**
 
@@ -163,6 +182,7 @@ fadeToggle(speed, callback);
 > $(selector).clone();
 
 # jQuery
+```
 1. DOM操作
     1.1  属性操作(很重要)
         attr：css用法一样
@@ -237,13 +257,13 @@ fadeToggle(speed, callback);
             c("div").width(100).height(100).css("backgroundColor","red");
         });
 
-    ```
+    
     display:box;
     box-orient: vertical;
     line-clamp: 2;
     overflow: hidden; 
-    ```   
-    插件：jquery.lazyload.js,jquery.color.js,jquery.ui.js....
 
+    插件：jquery.lazyload.js,jquery.color.js,jquery.ui.js....
+```
 
 
