@@ -278,4 +278,4 @@ git push [远程服务器地址] gh-pages
   - 更改代码之后自动刷新浏览器
   - 需要使用npm进行全局安装:`npm install browser-sync -g`,-g表示安装到全局
   - 使用:`browser-sync start --server --files "./index.html,app.css,./css/*.css,*.*" `
-  - --files参数指定要监视的文件，后面跟要监视的文件的文件路径以逗号分隔。
+  - --files参数指定要监视的文件，后面跟要监视的文件的文件路径以逗号分隔
