@@ -176,6 +176,7 @@ git、svn
     + 创建一个新分支
   - 命令:`git branch`
     + 查看当前所有的分支
+  - 添加版本号：commit之后 git tag -a 0.1.3 -m “Release version 0.1.3″
 
 ### 切换分支
   - 命令:`git checkout [分支名]`
