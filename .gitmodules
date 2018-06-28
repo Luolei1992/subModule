@@ -1,3 +1,4 @@
 [submodule "icon"]
 	path = icon
 	url = https://github.com/Luolei1992/notes.git
+	ignore = untracked
