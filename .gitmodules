@@ -1,0 +1,4 @@
+[submodule "sun"]
+	path = sun
+	url = https://github.com/Luolei1992/notes.git
+	branch = v0.2.1
